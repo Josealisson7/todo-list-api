@@ -3,8 +3,8 @@ CREATE TABLE Tasks (
     Title NVARCHAR(100) NOT NULL,
     Description NVARCHAR(MAX) NULL,
     CreatedAt DATETIME NOT NULL,
-    Status VARCHAR(20) NOT NULL DEFAULT 'pending'
-        CHECK (Status IN ('pending','progress','completed'))
+    Status VARCHAR(20) NOT NULL DEFAULT 'PENDING'
+        CHECK (Status IN ('PENDING','PROGRESS','COMPLETED'))
 );
 
 CREATE INDEX IX_Tasks_Status ON Tasks(Status);
