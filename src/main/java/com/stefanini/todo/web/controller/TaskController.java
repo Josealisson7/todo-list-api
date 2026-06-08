@@ -3,6 +3,7 @@ package com.stefanini.todo.web.controller;
 import com.stefanini.todo.application.dto.CreateTaskInput;
 import com.stefanini.todo.application.dto.TaskOutput;
 import com.stefanini.todo.application.port.in.TaskUseCase;
+import com.stefanini.todo.web.dto.StatusRequestDTO;
 import com.stefanini.todo.web.dto.TaskRequestDTO;
 import com.stefanini.todo.web.dto.TaskResponseDTO;
 import com.stefanini.todo.web.mapper.WebTaskMapper;
@@ -70,9 +71,9 @@ public class TaskController {
     @PatchMapping("/{id}/status")
     public ResponseEntity<TaskResponseDTO> updateTaskStatus(
             @PathVariable Long id,
-            @RequestBody Map<String, String> body) {
+            @RequestBody @Valid StatusRequestDTO statusRequestDTO) {
 
-        String status = body.get("status");
+        String status = statusRequestDTO.status();
         TaskOutput updated = taskUseCase.updateStatus(id, status);
         return ResponseEntity.ok(webTaskMapper.toResponse(updated));
     }
