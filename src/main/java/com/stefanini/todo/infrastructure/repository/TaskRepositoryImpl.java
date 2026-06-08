@@ -29,7 +29,6 @@ public class TaskRepositoryImpl implements TaskRepository {
         return mapper.toDomain(savedEntity);
     }
 
-
     @Override
     public Optional<Task> findById(Long id) {
         return jpaRepository.findById(id).map(mapper::toDomain);

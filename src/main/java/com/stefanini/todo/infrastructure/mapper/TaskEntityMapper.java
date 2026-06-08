@@ -12,4 +12,3 @@ public interface TaskEntityMapper {
     Task toDomain(TaskEntity entity);
 }
 
-
